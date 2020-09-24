@@ -33,7 +33,7 @@ class Player extends Circle {
 
 		vel.limit(maxSpeed);
 
-		pos.add(vel.copy().mult(deltaTime));
+		pos.add(PVector.mult(vel, deltaTime));
 	}
 
 	void draw() {

@@ -4,7 +4,7 @@ PVector gravity = new PVector(0, 0);
 float deltaTime, 
 	time = 0; 
 boolean gameOver;
-
+ 
 void setup() {
 	size(640, 480);	
 	
@@ -12,7 +12,7 @@ void setup() {
 }
 
 void draw() {
-	background(0);
+	clearBackground();
 	stroke(255);
 	fill(255);
 
@@ -59,4 +59,10 @@ void drawGameOver() {
 	text("GAME OVER", width / 2, height / 2);
 	textSize(16);
 	text("PRESS 'R' TO RESTART", width / 2, height / 2 + 24);
+}
+
+void clearBackground() {
+	fill(0, 30);
+	rectMode(CORNER);
+	rect(0, 0, width, height);
 }

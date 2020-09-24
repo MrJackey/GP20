@@ -30,7 +30,7 @@ class Ball extends Circle {
 
   void draw(){
     fill(col);
-    stroke(col);
+    stroke(255);
     ellipse(pos.x, pos.y, size, size);
   }
 

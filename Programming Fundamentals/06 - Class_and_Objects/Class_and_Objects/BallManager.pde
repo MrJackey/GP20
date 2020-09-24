@@ -24,7 +24,7 @@ class BallManager {
 
 	void add() {
 		Ball newBall = new Ball(0, 0);
-		int margin = 20;
+		int margin = 50;
 		while (true) {
 			newBall.pos.x = random(margin, width - margin);
 			newBall.pos.y = random(margin, height - margin);
