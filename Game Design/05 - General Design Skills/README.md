@@ -14,10 +14,10 @@
 ## Preview
 
 ### Horizontal
-![Horizontal banner](./horizontal_banner.png)
+![Horizontal banner](Horizontal_banner.png)
 
 ### Vertical
-![Vertical banner](./vertical_banner.png)
+![Vertical banner](Vertical_banner.png)
 
 
 *Note,  
