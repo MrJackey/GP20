@@ -11,8 +11,9 @@ class CellControllerExtra extends CellController {
 
 		cells = new Cell[cellMult * cellMult];
 		totalCells = cellMult * cellMult;
-		baseCellSize = (float)height / cellMult;
-		cellSize = baseCellSize;
+
+		gridSize = height;
+		refreshCellSize();
 
 		for (int y = 0; y < cellMult * cellMult; y++) {
 				cells[y] = new Cell(y % cellMult, floor(y / cellMult));
@@ -82,6 +83,7 @@ class CellControllerExtra extends CellController {
 
 	void draw() {
 		aliveCells = 0;
+	
 		push();
 		translate(camera.zoomPoint.x, camera.zoomPoint.y);
 
@@ -94,7 +96,7 @@ class CellControllerExtra extends CellController {
 
 		for (Cell cell : cells) {
 			if (cell.isAlive) {
-				cell.draw();
+				cell.draw(cellSize);
 				aliveCells++;
 			}
 		}

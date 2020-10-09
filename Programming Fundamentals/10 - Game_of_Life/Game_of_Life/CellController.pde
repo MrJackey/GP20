@@ -1,6 +1,6 @@
 class CellController {
 	Cell[][] cells;
-	float baseCellSize, 
+	float gridSize, 
 		cellSize;
 	int cellMult = 100,
 		updateDelay = 500,
@@ -15,8 +15,9 @@ class CellController {
 
 		cells = new Cell[cellMult][cellMult];
 		totalCells = cellMult * cellMult;
-		baseCellSize = (float)height / cellMult;
-		cellSize = baseCellSize;
+
+		gridSize = height;
+		refreshCellSize();
 
 		for (int x = 0; x < cellMult; x++) {
 			Cell[] cellColumn = cells[x];
@@ -90,6 +91,7 @@ class CellController {
 
 	void draw() {
 		aliveCells = 0;
+
 		push();
 		translate(camera.zoomPoint.x, camera.zoomPoint.y);
 
@@ -103,7 +105,7 @@ class CellController {
 		for (Cell[] cellRow : cells) {
 			for (Cell cell : cellRow) {
 				if (cell.isAlive) {
-					cell.draw();
+					cell.draw(cellSize);
 					aliveCells++;
 				}
 			}
@@ -130,5 +132,9 @@ class CellController {
 		if (!isBetween(x, 0, cellMult - 1) || !isBetween(y, 0, cellMult - 1))
 			return;
 		cells[x][y].toggleLife();
+	}
+
+	void refreshCellSize() {
+		cellSize = gridSize / cellMult;
 	}
 }

@@ -35,11 +35,11 @@ class Cell {
 		aliveNeighbours = count;
 	}
 
-	void draw() {
+	void draw(float size) {
 		square(
 			gridPos.x * cellController.cellSize + cellController.cellSize / 2, 
 			gridPos.y * cellController.cellSize + cellController.cellSize / 2, 
-			cellController.cellSize
+			size
 		);
 	}
 

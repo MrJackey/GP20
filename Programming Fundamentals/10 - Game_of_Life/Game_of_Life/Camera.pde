@@ -1,5 +1,6 @@
 class Camera {
 	PVector zoomPoint = new PVector(0, 0);
+	int zoomRatio = 50;
 
 	void pan() {
 		PVector mousePos = new PVector(mouseX, mouseY);
@@ -7,6 +8,9 @@ class Camera {
 	}
 
 	void resize(int dir) {
+		if (cellController.gridSize <= zoomRatio && dir > 0) 
+			return;
+
 		PVector mousePos = new PVector(mouseX, mouseY);
 		PVector gridMid = new PVector(width / 2, height / 2).add(zoomPoint);
 
@@ -14,12 +18,14 @@ class Camera {
 		mousePos.mult(-1);
 
 		zoomPoint.lerp(mousePos, 0.2);
-		if (cellController.cellSize > 1)
-			cellController.cellSize += dir < 0 ? 1 : -1;
+
+		cellController.gridSize += dir * zoomRatio  * -1;
+		cellController.refreshCellSize();
 	}
 	
 	void reset() {
-		cellController.cellSize = cellController.baseCellSize;
+		cellController.gridSize = height;
+		cellController.refreshCellSize();
 		zoomPoint.set(0, 0);
 	}
 }
